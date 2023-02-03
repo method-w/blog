@@ -1,1 +1,3 @@
-# This is Page of Vue.js!
+::: tip
+等待更新
+:::

@@ -41,7 +41,24 @@ export default {
         ],
       },
     ],
-    sidebar: 'auto',
+    sidebar: {
+      // '/data_structure-algorithm/': [
+      //   { text: '数组', link: 'array' },
+      //   { text: '栈', link: 'stack' },
+      //   { text: '队列', link: 'queue' },
+      //   { text: '链表', link: 'linked_list' },
+      //   { text: '集合', link: 'aggregate' },
+      //   { text: '字典和散列表', link: 'dictionary-hash_table' },
+      //   { text: '递归', link: 'recursion' },
+      //   { text: '树', link: 'tree' },
+      //   { text: '二叉堆和堆排序', link: 'binary_heap-heap_sorting' },
+      //   { text: '图', link: 'chart' },
+      //   { text: '排序和搜索算法', link: 'sort-search_algorithm' },
+      //   { text: '算法设计与技巧', link: 'algorithm_design-skills' },
+      //   { text: '算法复杂度', link: 'algorithm_complexity' },
+      // ],
+      '/data_structure-algorithm/': ['array', 'stack'],
+    },
   }),
   plugins: [
     searchPlugin({

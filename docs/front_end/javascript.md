@@ -1,1 +1,3 @@
-# This is Page of JavaScript!
+::: tip
+等待更新
+:::

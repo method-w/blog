@@ -1,1 +1,7 @@
-# This is Page of React!
+---
+title: React
+---
+
+::: tip
+等待更新
+:::
