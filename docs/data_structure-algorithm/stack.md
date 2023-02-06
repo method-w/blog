@@ -281,24 +281,24 @@ console.log(baseConverter(100345, 35)) // 2BW0
 
 ```js
 function isBracketBalanced(str) {
-  const leftBracketStack = new Stack()
+  const stack = new Stack()
   const brackets = str.split('')
 
   while (brackets.length) {
     const bracket = brackets.shift()
     switch (bracket) {
       case '(':
-        leftBracketStack.push(')')
+        stack.push(')')
         break
       case '[':
-        leftBracketStack.push(']')
+        stack.push(']')
         break
       case '{':
-        leftBracketStack.push('}')
+        stack.push('}')
         break
       default:
-        const leftBracket = leftBracketStack.pop()
-        if (bracket !== leftBracket) return false
+        const rightBracket = stack.pop()
+        if (bracket !== rightBracket) return false
         break
     }
   }
@@ -309,7 +309,48 @@ function isBracketBalanced(str) {
 案例二：给定一个只包含 `(` 和 `)` 的字符串，找出最长有效（格式正确且连续）括号子串的长度。
 
 ```js
-function longestValidParentheses(str) {}
+function longestValidParentheses(str) {
+  let maxLen = 0
+  const stack = new Stack()
+  stack.push(-1)
+
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === '(') {
+      stack.push(i)
+    } else {
+      stack.pop()
+      if (stack.isEmpty()) {
+        stack.push(i)
+      } else {
+        const curLen = i - stack[stack.size() - 1]
+        maxLen = Math.max(maxLen, curLen)
+      }
+    }
+  }
+
+  return maxLen
+}
 ```
 
 ### 汉诺塔
+
+在经典汉诺塔问题中，有 3 根柱子及 N 个不同大小的穿孔圆盘，盘子可以滑入任意一根柱子。一开始，所有盘子自上而下按升序依次套在第一根柱子上(即每一个盘子只能放在更大的盘子上面)。移动圆盘时受到以下限制:
+
+1. 每次只能移动一个盘子;
+2. 盘子只能从柱子顶端滑出移到下一根柱子;
+3. 盘子只能叠在比它大的盘子上。
+
+```js
+function hanota(A, B, C) {
+  let len = A.size()
+  // 当只有一个盘子时
+  if (len === 1) {
+    C.push(A.pop())
+    return
+  }
+  // 递归
+  hanoi(A.slice(1), C, B)
+  C.push(A.pop())
+  hanoi(B, A, C)
+}
+```
